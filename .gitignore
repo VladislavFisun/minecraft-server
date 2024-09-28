@@ -11,6 +11,8 @@
 *.bkp
 *.*~
 
+
+.env
 # Tower runtime roles
 roles/**
 !roles/requirements.yml

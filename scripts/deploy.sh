@@ -6,7 +6,7 @@ cd "$(dirname "$0")/../" || exit
 
 git fetch
 
-git pull
+git pull origin master || { echo "Git pull failed"; exit 1; }
 
 git log
 
