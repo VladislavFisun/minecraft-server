@@ -4,6 +4,11 @@ COMPOSE_FILE="docker-compose.yaml"
 
 cd "$(dirname "$0")/../" || exit
 
+git fetch
+
+git pull origin master
+
+git log
 
 echo "Starting deployment..."
 
