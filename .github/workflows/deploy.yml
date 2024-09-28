@@ -23,7 +23,7 @@ jobs:
 
       - name: Check if deploy script exists
         run: |
-          if [ -f ./project/minecraft-server/scripts/deploy.sh ]; then
+          if [ -f scripts/deploy.sh ]; then
             echo "Script exists"
           else
             echo "Script does not exist"
