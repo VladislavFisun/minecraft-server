@@ -17,5 +17,6 @@ docker-compose -f "$COMPOSE_FILE" up -d
 echo "Deployment completed!"
 
 echo 'Directory'
+echo 'Pull test'
 
 ls
