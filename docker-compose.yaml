@@ -15,9 +15,9 @@ services:
       ENFORCE_WHITELIST: "FALSE"
       RCON_ENABLED: "FALSE"
       ONLINE_MODE: "FALSE"
-      MEMORY: "2G"
+      MEMORY: "20"
       VERSION: "LATEST"
-      MAX_PLAYERS: 12
+      MAX_PLAYERS: 13
       MOTD: "Welcome to My Custom Minecraft Server!"
     tty: true
     stdin_open: true
