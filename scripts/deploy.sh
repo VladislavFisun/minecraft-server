@@ -9,7 +9,7 @@ echo "Starting deployment..."
 
 sudo docker-compose -f "$COMPOSE_FILE" down
 
-sudo docker-compose -f "$COMPOSE_FILE" up -d --build
+sudo docker-compose -f "$COMPOSE_FILE" up -d
 
 echo "Deployment completed!"
 
