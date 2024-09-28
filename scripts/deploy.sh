@@ -12,3 +12,7 @@ sudo docker-compose -f "$COMPOSE_FILE" down
 sudo docker-compose -f "$COMPOSE_FILE" up -d --build
 
 echo "Deployment completed!"
+
+echo 'Directory'
+
+ls
