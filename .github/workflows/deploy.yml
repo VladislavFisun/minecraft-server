@@ -20,6 +20,6 @@ jobs:
           echo "${{ secrets.MINECRAFT_DEPLOY_SECRET }}" > ~/.ssh/id_rsa
           ssh-keyscan -H 194.87.56.213 > ~/.ssh/known_hosts
       - name: connect and pull
-        run: ssh admin@194.87.56.213 "echo 'тестовая попытка' && pdw && ls"
+        run: ssh admin@194.87.56.213 "echo 'тестовая попытка' && pwd && ls"
       - name: cleanup
         run: rm -rf ~/.ssh
