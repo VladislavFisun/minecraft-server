@@ -16,10 +16,4 @@ sudo docker-compose -f "$COMPOSE_FILE" down
 
 sudo docker-compose -f "$COMPOSE_FILE" up -d --build
 
-sleep 10
-
-sudo docker-compose -f "$COMPOSE_FILE" ps
-
-sudo docker-compose -f "$COMPOSE_FILE" logs --tail=100
-
 echo "Deployment completed!"
