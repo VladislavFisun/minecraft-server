@@ -16,7 +16,7 @@ services:
       ONLINE_MODE: "FALSE"
       MEMORY: "2G"
       VERSION: "LATEST"
-      MAX_PLAYERS: 20
+      MAX_PLAYERS: 19
       MOTD: "Welcome to My Custom Minecraft Server!"
     tty: true
     stdin_open: true

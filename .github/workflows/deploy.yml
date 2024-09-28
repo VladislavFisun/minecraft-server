@@ -18,8 +18,8 @@ jobs:
         run: |
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.MINECRAFT_DEPLOY_SECRET }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SSH_IP }} > ~/.ssh/known_hosts
+          ssh-keyscan -H 194.87.56.213 > ~/.ssh/known_hosts
       - name: connect and pull
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }} echo"тестовая попытка" "pdw" "ls"
+        run: ssh admin@194.87.56.213 echo"тестовая попытка" "pdw" "ls"
       - name: cleanup
         run: rm -rf ~/.ssh
