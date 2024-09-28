@@ -2,18 +2,18 @@
 
 COMPOSE_FILE="docker-compose.yaml"
 
-cd "$(dirname "$0")/../" || exit
-
-git fetch
-
-git pull origin master || { echo "Git pull failed"; exit 1; }
+git pull
 
 git log
-
 echo "Starting deployment..."
 
 sudo docker-compose -f "$COMPOSE_FILE" down
 
 sudo docker-compose -f "$COMPOSE_FILE" up -d --build
 
-echo "Deployment completed!"
+sudo docker-compose -f "$COMPOSE_FILE" logs -f
+sleep 10
+sudo docker-compose -f "$COMPOSE_FILE" ps
+sudo docker-compose -f "$COMPOSE_FILE" logs --tail=100
+
+echo "Deployment completed!"eted!"
