@@ -8,6 +8,8 @@ git fetch
 
 git pull origin master
 
+git log
+
 echo "Starting deployment..."
 
 sudo docker-compose -f "$COMPOSE_FILE" down
