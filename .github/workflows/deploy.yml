@@ -12,16 +12,29 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: install ssh keys
-        # check this thread to understand why its needed:
-        # https://stackoverflow.com/a/70447517
+      - name: Install SSH keys
         run: |
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.SSH_SECRET_KEY }}" > ~/.ssh/id_rsa
           ssh-keyscan -H 194.87.56.213 > ~/.ssh/known_hosts
-      - name: execute script
-        run: "ls"
-      - name: connect and pull
+
+      - name: Check current directory
+        run: pwd  # Выводит текущую директорию
+
+      - name: Check if deploy script exists
+        run: |
+          if [ -f ./project/minecraft-server/scripts/deploy.sh ]; then
+            echo "Script exists"
+          else
+            echo "Script does not exist"
+            exit 1
+          fi  
+
+      - name: Make deploy script executable
+        run: chmod +x ./project/minecraft-server/scripts/deploy.sh
+
+      - name: Connect and pull
         run: ssh admin@194.87.56.213 "project/minecraft-server/scripts/deploy.sh"
-      - name: cleanup
+
+      - name: Cleanup
         run: rm -rf ~/.ssh
