@@ -1,27 +1,25 @@
-name: Deploy to VPS
+name: Deploy to minecraft VPS
 
 on:
   push:
     branches:
-      - main
+      - master
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  run_pull:
+    name: run pull
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Copy files to VPS
+      - name: install ssh keys
+        # check this thread to understand why its needed:
+        # https://stackoverflow.com/a/70447517
         run: |
-          scp -r ./ your_username@your_vps_ip:/path/to/your/project
-
-      - name: Run Docker Compose
-        run: |
-          ssh your_username@your_vps_ip 'cd /path/to/your/project && docker-compose pull && docker-compose up -d --remove-orphans'
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.MINECRAFT_DEPLOY_SECRET }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_IP }} > ~/.ssh/known_hosts
+      - name: connect and pull
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }} echo"тестовая попытка" "pdw" "ls"
+      - name: cleanup
+        run: rm -rf ~/.ssh
