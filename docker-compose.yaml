@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    volumes:
+      - minecraftdata:/data
+    ports:
+      - 25565:25565
+    environment:
+      ICON: https://avatars.mds.yandex.net/get-games/11374519/2a0000018d98e86e3230a1089dd6e38b61c1/pjpg128x128
+      EULA: "TRUE"
+      TYPE: "SPIGOT"
+      ENABLE_WHITELIST: "FALSE"
+      ENFORCE_WHITELIST: "FALSE"
+      ONLINE_MODE: "FALSE"
+      MEMORY: "2G"
+      VERSION: "LATEST"
+      MAX_PLAYERS: 20
+      MOTD: "Welcome to My Custom Minecraft Server!"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+
+volumes:
+  minecraftdata:
+    external: true
